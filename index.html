@@ -1,1 +1,1346 @@
-test
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vores Bilbao Rejseguide • M&N • 15-21 Maj</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #fafafa;
+            --text: #1a1a1a;
+            --border: #e0e0e0;
+            --accent: #2a5d67;
+            --accent-light: #4a8d97;
+            --hover: #f5f5f5;
+            --shadow: rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        header {
+            margin-bottom: 48px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 32px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+
+        .hotel-info {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: white;
+            padding: 20px 24px;
+            border-radius: 8px;
+            margin: 24px 0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .hotel-info strong {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .search-box {
+            position: sticky;
+            top: 16px;
+            z-index: 100;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 32px;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .search-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-family: inherit;
+            transition: all 0.2s;
+            flex: 1;
+        }
+
+        .btn:hover {
+            background: var(--hover);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            border-color: var(--accent-light);
+        }
+
+        .section {
+            margin-bottom: 48px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .count {
+            font-size: 13px;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .place {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 12px;
+            transition: all 0.2s;
+        }
+
+        .place:hover {
+            box-shadow: 0 4px 12px var(--shadow);
+            transform: translateY(-1px);
+        }
+
+        .place-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .place-name {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .place-type {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .place-desc {
+            color: #666;
+            font-size: 14px;
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        .place-meta {
+            display: flex;
+            gap: 16px;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #f0f0f0;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .icon {
+            width: 16px;
+            height: 16px;
+            opacity: 0.6;
+        }
+
+        .link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 13px;
+            transition: color 0.2s;
+        }
+
+        .link:hover {
+            color: var(--accent-light);
+            text-decoration: underline;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s;
+            pointer-events: none;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .back-to-top:hover {
+            background: var(--accent-light);
+            transform: scale(1.1);
+        }
+
+        .important-note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 16px 20px;
+            margin: 24px 0;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .important-note strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #856404;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px 16px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .place-meta {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bilbao Rejseguide</h1>
+            <div class="subtitle">15. - 21. maj 2026</div>
+            
+            <div class="hotel-info">
+                <strong>🏨 NYX Hotel Bilbao by Leonardo Hotels</strong>
+                Areatza Kalea, 4, Ibaiondo, 48005 Bilbao, Bizkaia
+            </div>
+
+            <div class="important-note">
+                <strong>⚠️ Husk før afrejse:</strong>
+                Bestil billetter til Guggenheim Museum online: <a href="https://tickets.guggenheim-bilbao.eus/en" target="_blank" class="link">tickets.guggenheim-bilbao.eus</a>
+                <br>Museet er åbent tirsdag-søndag 10:00-19:00 (i sommeren til 20:00)
+            </div>
+        </header>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" class="search-input" placeholder="🔍 Søg blandt steder...">
+            <div class="search-actions">
+                <button class="btn" onclick="clearSearch()">🗑️ Ryd</button>
+                <button class="btn btn-primary" onclick="scrollToBottom()">🪄 Til bund</button>
+            </div>
+        </div>
+
+        <!-- MUSEER -->
+        <section class="section" id="museums">
+            <div class="section-header">
+                <h2>🏛️ Museer</h2>
+                <span class="count">10 steder</span>
+            </div>
+
+            <div class="place" data-name="Guggenheim Museum Bilbao">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Must-see</div>
+                        <div class="place-name">Guggenheim Museum Bilbao</div>
+                    </div>
+                </div>
+                <div class="place-desc">Frank Gehry's ikoniske titanium-klædte bygning fra 1997. Moderne og samtidskunst inkl. Richard Serra's "The Matter of Time". Verdensberømt arkitektur.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>15 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="icon">💰</span>
+                        <span>€18</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Guggenheim+Museum+Bilbao" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Museo de Bellas Artes">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Kunstmuseum</div>
+                        <div class="place-name">Museo de Bellas Artes</div>
+                    </div>
+                </div>
+                <div class="place-desc">Et af Spaniens rigeste kunstmuseer uden for Madrid. Samling fra 1100-tallet til nutiden inkl. Velázquez, Goya, Picasso og baskisk kunst. Grundlagt 1908.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>12 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="icon">💰</span>
+                        <span>Gratis</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Bilbao+Fine+Arts+Museum" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Itsasmuseum - Bilbao Maritime Museum">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Søfartsmuseum</div>
+                        <div class="place-name">Itsasmuseum - Bilbao Maritime Museum</div>
+                    </div>
+                </div>
+                <div class="place-desc">Beliggende på de gamle Euskalduna-værfter. Fortæller historien om Bilbaos maritime arv, skibsbyggeri og relationen til havet.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>18 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Itsasmuseum+Bilbao" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Euskal Museoa - Basque Museum">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Kulturhistorie</div>
+                        <div class="place-name">Euskal Museoa - Basque Museum</div>
+                    </div>
+                </div>
+                <div class="place-desc">Etnografisk museum om det baskiske folks historie, kultur og traditioner. Beliggende i gammel bygning fra 1600-tallet i Casco Viejo.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>8 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Euskal+Museoa+Bilbao" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Arkeologi Museoa">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Arkæologi</div>
+                        <div class="place-name">Arkeologi Museoa</div>
+                    </div>
+                </div>
+                <div class="place-desc">Arkæologisk museum med 100.000+ års historie fra Bizkaia-regionen. Forbinder fortid med nutid gennem bevarede artefakter.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>7 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Arkeologi+Museoa" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Athletic Club Museum">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Sport</div>
+                        <div class="place-name">Athletic Club Museum</div>
+                    </div>
+                </div>
+                <div class="place-desc">Fortæller historien om Athletic Bilbao (grundlagt 1898) med trofæer, trøjer og legendarer. Kun baskiske spillere - unik filosofi i moderne fodbold.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>22 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="icon">💰</span>
+                        <span>€19</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/San+Mames+Stadium" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Museum of Artistic Reproductions">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Kunst</div>
+                        <div class="place-name">Museum of Artistic Reproductions</div>
+                    </div>
+                </div>
+                <div class="place-desc">Reproduktioner af mesterværker fra verdens største museer. Neo-gotisk kirke som bygning. Venus de Milo, Laocoön, Michelangelo's Moses m.fl.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>25 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Museo+de+Reproducciones+Artisticas" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Azkuna Zentroa">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Kulturcenter</div>
+                        <div class="place-name">Azkuna Zentroa</div>
+                    </div>
+                </div>
+                <div class="place-desc">Multikulturelt center i tidligere vinkælder designet af Philippe Starck. Udstillinger, film, bibliotek og events. Arkitektonisk seværdighed.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>12 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Azkuna+Zentroa" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Sala Rekalde Gallery">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Galleri</div>
+                        <div class="place-name">Sala Rekalde Gallery</div>
+                    </div>
+                </div>
+                <div class="place-desc">Samtidskunst fra Spanien og internationalt. Grundlagt 1991. Forum for kulturel debat og moderne kunstsprog.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>10 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Sala+Rekalde" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Museum of Sacred Art">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Religiøs kunst</div>
+                        <div class="place-name">Museum of Sacred Art</div>
+                    </div>
+                </div>
+                <div class="place-desc">2000+ stykker hellig kunst fra middelalderen til 1900-tallet. Skulpturer, malerier, liturgiske ornamenter og guldarbejde. I Incarnation-klostret.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>6 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Diocesan+Museum+of+Sacred+Art+Bilbao" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VEGANSKE RESTAURANTER -->
+        <section class="section" id="vegan">
+            <div class="section-header">
+                <h2>🌱 Veganske Muligheder</h2>
+                <span class="count">10+ steder</span>
+            </div>
+
+            <div class="place" data-name="La Camelia Vegan Bar">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">100% Vegansk</div>
+                        <div class="place-name">La Camelia Vegan Bar</div>
+                    </div>
+                </div>
+                <div class="place-desc">Top 10 økologiske restauranter i Spanien. Hvide mursten, økologiske vine, lange træbænke. Hummus, seitan, tofu, tempeh, sushi, goyaza. Veganske burgere.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>20 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/La+Camelia+Vegan+Bar" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Garibolo Jatetxe">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Vegetarisk/Vegansk</div>
+                        <div class="place-name">Garibolo Jatetxe</div>
+                    </div>
+                </div>
+                <div class="place-desc">4-retters menu med valgmuligheder. Salater, grøntsagssupper, pasta, ris, fyldt aubergine og courgette. Fantastisk chokolademousse! Rimelige priser.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>15 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Garibolo+Jatetxe" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Green Bistrot">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Vegansk/Vegetarisk</div>
+                        <div class="place-name">Green Bistrot</div>
+                    </div>
+                </div>
+                <div class="place-desc">Friske, sunde retter med god mad. Velegnet til frokost og aftensmad. Mange veganske valgmuligheder på menukortet.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>18 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Green+Bistrot" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Sua San">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Café med veganske muligheder</div>
+                        <div class="place-name">Sua San</div>
+                    </div>
+                </div>
+                <div class="place-desc">Overfor Guggenheim. Sunde retter: salater, supper, grøntsagslasagne. Populær brunch i weekenden. Combo menu €21. Fantastisk beliggenhed!</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>14 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Sua+San+Bilbao" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Txukrut Vegan Bar">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">100% Vegansk</div>
+                        <div class="place-name">Txukrut Vegan Bar</div>
+                    </div>
+                </div>
+                <div class="place-desc">Hjemmelavet seitan og vegansk ost. Salater, sandwiches, supper og sushi. Vintage atmosfære med kreative retter.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>22 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Txukrut" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Bohemian Lane">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Vegansk Bageri</div>
+                        <div class="place-name">Bohemian Lane Pastelería Vegana</div>
+                    </div>
+                </div>
+                <div class="place-desc">Fantastiske veganske kager, brownies og desserter. Perfekt til eftermiddagskaffe eller morgenmad.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>16 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Bohemian+Lane" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Landare">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Vegetarisk/Vegansk</div>
+                        <div class="place-name">Landare</div>
+                    </div>
+                </div>
+                <div class="place-desc">Fokus på økologiske ingredienser og sæsonprodukter. Vegetarisk menu med mange veganske muligheder.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>19 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Landare+Bilbao" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Cardamomo Vegetariano">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Vegetarisk</div>
+                        <div class="place-name">Cardamomo Vegetariano</div>
+                    </div>
+                </div>
+                <div class="place-desc">Traditionel vegetarisk restaurant med mange veganske adaptioner. Daglige menuer med rimelige priser.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>17 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Cardamomo+Vegetariano" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="El Curry Verde">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Vegetarisk/Vegansk</div>
+                        <div class="place-name">El Curry Verde</div>
+                    </div>
+                </div>
+                <div class="place-desc">Indisk-inspireret vegetarisk mad. Curry, dal og tandoori med veganske varianter. Autentiske smagsvarianter.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>21 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/El+Curry+Verde" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Tedone">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Vegetarisk/Vegansk</div>
+                        <div class="place-name">Tedone</div>
+                    </div>
+                </div>
+                <div class="place-desc">Friske, sunde muligheder. Grønne bønner med avocado, pinjekerner og olivenolie. Økologisk vin. Populær blandt vegetarer.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>14 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Tedone" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BARER & DRINKS -->
+        <section class="section" id="bars">
+            <div class="section-header">
+                <h2>🍸 Barer & Drinks</h2>
+                <span class="count">10 steder</span>
+            </div>
+
+            <div class="place" data-name="Gin Fizz Bilbao">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Cocktail Bar</div>
+                        <div class="place-name">Gin Fizz Bilbao</div>
+                    </div>
+                </div>
+                <div class="place-desc">Bedste cocktailbar i Bilbao! Diego, den passionerede mixologist, laver perfekte drinks med komplekse smagsnuancer. Intimate atmosfære.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>11 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Gin+Fizz+Bilbao" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="La Antigua Cigarrería">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Cocktail Bar</div>
+                        <div class="place-name">La Antigua Cigarrería</div>
+                    </div>
+                </div>
+                <div class="place-desc">Old Cigar Shop. Elegante cocktails, vermouth og vin. Dæmpet belysning, romantisk. 500+ whiskies! Live bands og DJs bagved.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>13 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/La+Antigua+Cigarreria" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Hunky Dory">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Cocktail & Vinyl Bar</div>
+                        <div class="place-name">Hunky Dory</div>
+                    </div>
+                </div>
+                <div class="place-desc">Vintage-inspireret med vinylsamling. Perfekt balancerede drinks som "Velvet Underground" (gin og bær). For musik- og cocktailelskere.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>16 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Hunky+Dory+Bilbao" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="La Mula de Moscú">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Mule Specialist Bar</div>
+                        <div class="place-name">La Mula de Moscú</div>
+                    </div>
+                </div>
+                <div class="place-desc">Specialiseret i mule-cocktails inkl. "Basque Mule" med lokal cider. Hyggelig og livlig stemning i hjertet af Bilbao.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>10 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/La+Mula+de+Moscu" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Sumerian Club">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Cocktail Lounge</div>
+                        <div class="place-name">Sumerian Club</div>
+                    </div>
+                </div>
+                <div class="place-desc">Moderne lounge med ekspertlavede cocktails. Plysindretning og late-night vibes. Rimelige priser og god atmosfære.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>14 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Sumerian+Club" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Art Bilbao">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Cocktail Bar</div>
+                        <div class="place-name">Art Bilbao</div>
+                    </div>
+                </div>
+                <div class="place-desc">Tæt på Guggenheim. Hver drink er kunst - kreativ menu med baskiske smagsvarianter og global mixology. "Canvas Colada" er en oplevelse!</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>15 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Art+Bilbao" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Dominante">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Premium Cocktail Bar</div>
+                        <div class="place-name">Dominante</div>
+                    </div>
+                </div>
+                <div class="place-desc">Sofistikeret atmosfære med mørkt træpaneling og moderne indretning. Baskiske smagsvarianter møder global innovation. Eksklusive events.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>12 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Dominante+Bilbao" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Bihotz Cafe">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Café & Craft Beer</div>
+                        <div class="place-name">Bihotz Cafe</div>
+                    </div>
+                </div>
+                <div class="place-desc">Kaffe, te og craft beer fra internationale bryggerier. Afslappet stemning, populær blandt lokale. Åbent sent.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>9 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Bihotz+Cafe" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Sir Winston Churchill Pub">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Irish Pub</div>
+                        <div class="place-name">Sir Winston Churchill Pub</div>
+                    </div>
+                </div>
+                <div class="place-desc">Autentisk Guinness, live irsk musik (onsdag: folk session). Hyggelig atmosfære, venlige mennesker, erfaren bartender.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>17 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Sir+Winston+Churchill+Pub" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Pub Otxoa">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Show Bar</div>
+                        <div class="place-name">Pub Otxoa</div>
+                    </div>
+                </div>
+                <div class="place-desc">Berømt ejer José Antonio Nielfa laver shows med fjer, pailletter og komedie. Besøgt af kendisser. Moderne musik, dans, sofaer.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>7 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Pub+Otxoa" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CAFÉER -->
+        <section class="section" id="cafes">
+            <div class="section-header">
+                <h2>☕ Caféer</h2>
+                <span class="count">10 steder</span>
+            </div>
+
+            <div class="place" data-name="Café Iruña">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Historisk Café</div>
+                        <div class="place-name">Café Iruña</div>
+                    </div>
+                </div>
+                <div class="place-desc">Siden 1903! Arabiske motiver, udskårne søjler, middelalderkeramik. Berømt for pintxos og fantastisk atmosfære. Must-visit!</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>9 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Cafe+Iruna" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Baristas Club">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Specialty Coffee</div>
+                        <div class="place-name">Baristas Club</div>
+                    </div>
+                </div>
+                <div class="place-desc">I gamle by. Alt er hjemmelavet, perfekt kaffe (ingen sukker nødvendigt!). Sæsonmenu. Hyggelige borde i smalle gader.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>8 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Baristas+Club" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Bølge Café">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Brunch & Coffee</div>
+                        <div class="place-name">Bølge Café</div>
+                    </div>
+                </div>
+                <div class="place-desc">Nær Guggenheim. Toast, æg, yogurt bowls og bagværk. Perfekt til morgenmad. Beskytte facade med José Arrue's vægdekorationer.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>13 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Bolge+Cafe" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Arvo">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Specialty Coffee</div>
+                        <div class="place-name">Arvo</div>
+                    </div>
+                </div>
+                <div class="place-desc">Kaffe 84+ point i professionelle smagninger. Toast, bowls, hjemmelavet kage. Lokale ingredienser. Old Town Coffee Roasters.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>11 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Arvo+Bilbao" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Nokora Coffee">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Coffee Tasting Store</div>
+                        <div class="place-name">Nokora Coffee</div>
+                    </div>
+                </div>
+                <div class="place-desc">Ved Plaza del Museo. Specialty coffee fra hele verden. Deling af viden og erfaring. Kaffebønner og tilbehør til salg. Kun take-away.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>15 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Nokora+Coffee" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Café Originale">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Café & Brunch</div>
+                        <div class="place-name">Café Originale</div>
+                    </div>
+                </div>
+                <div class="place-desc">Specialty coffee fra BB's Café Bizkaia. Hjemmelavet, sæsonbetonet morgenmad og frokost. Støtter lokale producenter.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>16 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Cafe+Originale" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Bochoco">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Gastro-Café</div>
+                        <div class="place-name">Bochoco</div>
+                    </div>
+                </div>
+                <div class="place-desc">Hjemmelavet bagværk, slik og kager der skifter dagligt. Croissanter, kage-pops, brownies. Churros med chokolade!</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>14 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Bochoco" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Nata Lisboa">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Portugisisk Bageri</div>
+                        <div class="place-name">Nata Lisboa</div>
+                    </div>
+                </div>
+                <div class="place-desc">Portugisiske smagsvarianter i Bilbao. Pastel de nata og sæsonkager. Friskbagt. Fantastisk kaffe med flødeskum.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>10 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Nata+Lisboa" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Kikarea Café">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Café & Lunch</div>
+                        <div class="place-name">Kikarea Café</div>
+                    </div>
+                </div>
+                <div class="place-desc">Sød morgenmad, velsmagende frokost, hurtige snacks. Alt hvad du har brug for gennem dagen. Hyggelig atmosfære.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>12 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Kikarea+Cafe" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Café del Arenal">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Traditionel Café</div>
+                        <div class="place-name">Café del Arenal</div>
+                    </div>
+                </div>
+                <div class="place-desc">40 års historie i gamle by. Paella, pinchos, frokost- og aftensmenu, hjemmelavede desserter. Berømte churros med chokolade!</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>6 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Cafe+del+Arenal" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BIBLIOTEKER -->
+        <section class="section" id="libraries">
+            <div class="section-header">
+                <h2>📚 Biblioteker</h2>
+                <span class="count">2 steder</span>
+            </div>
+
+            <div class="place" data-name="Biblioteca Central de Bidebarrieta">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Hovedbibliotek</div>
+                        <div class="place-name">Biblioteca Central de Bidebarrieta</div>
+                    </div>
+                </div>
+                <div class="place-desc">Smukt bibliotek i fransk eklektisk stil af Severino de Achúcarro (1800-tallet). 100.000+ bøger. Farvede glasvinduer, fin arkitektur. Kulturcenter!</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>5 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Biblioteca+Bidebarrieta" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Guggenheim Museum Library">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Kunstbibliotek</div>
+                        <div class="place-name">Guggenheim Museum Library</div>
+                    </div>
+                </div>
+                <div class="place-desc">Gratis adgang! 13.000+ bind om kunst - monografier, udstillingskataloger, kunsttidsskrifter. Dokumenter om samlingen og udstillinger.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>15 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Guggenheim+Museum+Bilbao" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOGHANDLER -->
+        <section class="section" id="bookshops">
+            <div class="section-header">
+                <h2>📖 Boghandler</h2>
+                <span class="count">5 steder</span>
+            </div>
+
+            <div class="place" data-name="Librería Cámara">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Specialboghandel</div>
+                        <div class="place-name">Librería Cámara</div>
+                    </div>
+                </div>
+                <div class="place-desc">80+ års historie, 3. generation. 25.000+ bøger. Specialiseret i film, foto, musik, arkitektur, mode, design. Workshops, koncerter, præsentationer.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>18 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Libreria+Camara" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Librería Astarloa">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Antikvariat</div>
+                        <div class="place-name">Librería Astarloa</div>
+                    </div>
+                </div>
+                <div class="place-desc">Smuk antikvarboghandel! Store glasmontre, ornamentale bogreoler som maurisk palads. Gamle bøger, gravurer, plakater fra 1400-tallet.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>10 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Libreria+Astarloa" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Librería Joker">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Comics & Gaming</div>
+                        <div class="place-name">Librería Joker</div>
+                    </div>
+                </div>
+                <div class="place-desc">Siden 1994. Comics, grafiske romaner, manga, anime, videospil. Marvel, Star Wars, War Games. Nye og brugte, samlerobjekter.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>19 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Libreria+Joker" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="La Ilusa">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Kunstboghandel</div>
+                        <div class="place-name">La Ilusa</div>
+                    </div>
+                </div>
+                <div class="place-desc">Bilbao La Vieja. Fotografi, film, kunst, filosofi. Forskelligartet litteratur fra nær og fjern. Workshops, udstillinger, samtaler.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>28 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/La+Ilusa+Bilbao" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="place" data-name="Boulandier Bookshop">
+                <div class="place-header">
+                    <div>
+                        <div class="place-type">Antikvariat</div>
+                        <div class="place-name">Boulandier Bookshop</div>
+                    </div>
+                </div>
+                <div class="place-desc">Mellem Guggenheim og Fine Arts Museum. Specialiseret i rejser, videnskab og baskisk kultur. Gammel, sjælden og nysgerrige udgivelser.</div>
+                <div class="place-meta">
+                    <div class="meta-item">
+                        <span class="icon">🚶</span>
+                        <span>14 min. fra NYX Hotel</span>
+                    </div>
+                    <div class="meta-item">
+                        <a href="https://www.google.com/maps/dir/NYX+Hotel+Bilbao,+Areatza+Kalea,+4,+Ibaiondo,+48005+Bilbao/Boulandier" target="_blank" class="link">📍 Google Maps</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const places = document.querySelectorAll('.place');
+
+        searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            places.forEach(place => {
+                const name = place.getAttribute('data-name').toLowerCase();
+                const desc = place.querySelector('.place-desc').textContent.toLowerCase();
+                const type = place.querySelector('.place-type').textContent.toLowerCase();
+                
+                if (name.includes(searchTerm) || desc.includes(searchTerm) || type.includes(searchTerm)) {
+                    place.style.display = '';
+                } else {
+                    place.style.display = 'none';
+                }
+            });
+        });
+
+        function clearSearch() {
+            searchInput.value = '';
+            places.forEach(place => {
+                place.style.display = '';
+            });
+            searchInput.focus();
+        }
+
+        function scrollToBottom() {
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth'
+            });
+        }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Back to top button visibility
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>
